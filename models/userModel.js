@@ -3,7 +3,7 @@ const userRoleEnum =require('../helpers/userRole')
 const userSchema= new mongoose.Schema({
     userName:{
         type:String,    //datatype
-        required:true,  //manditory
+        required:false,  //manditory
         trim:true,    //white spaces remove
         minlength: 6,
         maxlength:18,
@@ -11,14 +11,14 @@ const userSchema= new mongoose.Schema({
     },
     email:{
         type:String,    //datatype
-        required:true,  //manditory
+        required:false,  //manditory
         trim:true,    //white spaces remove
-        unique:true,  //unique
         lowercase:true,
     },
     phone:{
         type:String,    //datatype
-        required:false,  //manditory
+        required:true,  //manditory
+        unique:true,
     },
     address:{
         type:String,    //datatype
@@ -33,7 +33,7 @@ const userSchema= new mongoose.Schema({
     }
 },{versionKey:false});
 
-const User=mongoose.model("user",userSchema);
+const User=mongoose.model("users",userSchema);
 
 module.exports=User;
 

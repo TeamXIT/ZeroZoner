@@ -1,6 +1,5 @@
 const User = require('../models/userModel');
 
-
 const createAsync = async (req, res) => {
     try {
         // destructing the request and then forming the user model.
@@ -86,10 +85,5 @@ const deleteAsync = async (req, res) => {
     }
   };
   
-  
-  
-
-
-
 
 module.exports= {createAsync,getAllAsync,getAsync,deleteAsync,updateAsync};
