@@ -1,15 +1,19 @@
 const express = require('express');
-const authenticateToken=require('../middlewares/jwt');
+const {verifyJWT}=require('../middlewares/jwt');
 const verifyUserRole=require('../middlewares/userRoleVerifier');
-const userRoleEnum= require('../helpers/userRole')
+const userRoleEnum= require('../helpers/userRole');
+const checkPermission=require('../middlewares/checkPermission');
+const permissionsEnum=require('../helpers/permissions');
+
 
 const {createAsync, getAllAsync,getAsync,deleteAsync,updateAsync} = require('../controllers/userController');
 const router = express.Router();
 
-router.post("/create",authenticateToken,verifyUserRole(userRoleEnum[0]),createAsync);
-router.get('/getAll',authenticateToken,getAllAsync);
-router.get('/get/:id',authenticateToken,getAsync);
-router.delete("/delete/:id",authenticateToken,deleteAsync);
-router.put('/update',authenticateToken,updateAsync);
+//router.post("/create",authenticateToken,verifyUserRole(userRoleEnum[0]),checkPermission(permissionsEnum.ENTREPRENEUR),createAsync);
+router.post("/create",createAsync);
+router.get('/getAll',verifyJWT,getAllAsync);
+router.get('/get/:id',getAsync);
+router.delete("/delete/:id",deleteAsync);
+router.put('/update',updateAsync);
 
 module.exports= router;

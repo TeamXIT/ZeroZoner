@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-const authenticateToken = (req, res, next) => {
-  const token = req.header('x-auth');
+const verifyJWT = (req, res, next) => {
+  const token = req.header('X-Auth-Token');
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized - Token not provided' });
   }
@@ -16,4 +16,4 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
-module.exports = { authenticateToken };
+module.exports = { verifyJWT };

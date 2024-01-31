@@ -1,8 +1,11 @@
 const userRoleEnum = require('../helpers/userRole');
 
 const verifyUserRole = (requiredRole) => {
+
   return (req, res, next) => {
-    const userRole = req.user && req.user.role;
+    console.log(req.user);
+
+     const userRole = req.user && req.user.role;
 
     if (!userRole || !userRoleEnum.includes(userRole)) {
       return res.status(403).json({ message: 'Forbidden - Invalid or missing user role' });

@@ -36,7 +36,7 @@ const loginWithOTP = async (req, res) => {
         let newUser=new User({phone: phone, roles: account_type});
         await newUser.save();
         let _secret=process.env.JWT_SECRET || 'rajasekhar-secret-key';
-        const token = jwt.sign({ userId: newUser._id ,role:newUser.roles,phone:newUser.phone }, _secret , { expiresIn: '1h' });
+        const token = jwt.sign({ userId: newUser._id ,role:newUser.roles,phone:newUser.phone,permissions: "user_permissions" }, _secret , { expiresIn: '1h' });
         return res.status(200).json({ message: 'user successfully created',access_token:token});
       }
       else
@@ -49,7 +49,7 @@ const loginWithOTP = async (req, res) => {
       if(success)
       {
         let _secret=process.env.JWT_SECRET || 'rajasekhar-secret-key';
-        const token = jwt.sign({ userId: _user._id ,role:_user.roles,phone:_user.phone }, _secret , { expiresIn: '1h' });
+        const token = jwt.sign({ userId: _user._id ,role:_user.roles,phone:_user.phone,permissions: "user_permissions"  }, _secret , { expiresIn: '1h' });
         return res.status(200).json({ message: message,access_token:token});
       }
       else
