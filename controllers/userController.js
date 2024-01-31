@@ -29,6 +29,8 @@ const createAsync = async (req, res) => {
 
 const getAllAsync = async (req, res) => {
     try {
+
+      //TODO add filtering concept....
       const users = await User.find();
       res.status(200).json(users);
     } catch (error) {

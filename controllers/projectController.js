@@ -13,6 +13,10 @@ const createAsync = async (req, res) => {
 
 const getAllAsync = async (req, res) => {
     try {
+           
+       //filtering ---- >> paging,limit.., search...
+
+
         res.status(200).json(PROJECT_CREATED);
     } catch (error) {
       res.status(500).json({ error: error.message });
