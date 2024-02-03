@@ -3,7 +3,7 @@ const {connectDB} =require('./config/db');
 const userRoutes= require('./routes/userRoutes');
 const authRoutes=require('./routes/authRoutes');
 const projectRoutes=require('./routes/projectRoutes');
-const {verifyJWT}=require('../middlewares/jwt');
+const {verifyJWT}=require('./middlewares/jwt');
 const app = express();
 const port = 3000;
 
