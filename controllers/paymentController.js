@@ -1,6 +1,27 @@
-const {pg}= require('../config/cashfree');
+const {Cashfree}= require('../config/cashfree');
+
+
  const createOrder = async (req,res)=>{
     console.log("Called createOrder method.");
-    res.status(200).json('called createorder');
+    var request = {
+      "order_amount": 1,
+      "order_currency": "INR",
+      "order_id": "order_34692745",
+      "customer_details": {
+          "customer_id": "walterwNrcMi",
+          "customer_phone": "9999999999"
+      },
+      "order_meta": {
+          "return_url": "https://www.cashfree.com/devstudio/preview/pg/web/checkout?order_id={order_id}"
+      }
+  };
+  Cashfree.PGCreateOrder("2022-09-01", request).then((response) => {
+      console.log('Order Created successfully:',response.data)
+      res.status(200).json(response.data);
+  }).catch((error) => {
+      console.error('Error:', error.response.data.message);
+  });
+    
  }
+
  module.exports={createOrder};

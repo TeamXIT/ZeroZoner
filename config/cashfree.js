@@ -1,9 +1,6 @@
-const { PaymentGateway } = require('@cashfreepayments/cashfree-sdk');
+const { Cashfree } = require('cashfree-pg');
 // Instantiate Cashfree Payment Gateway
-const pg = new PaymentGateway({
-  env: 'TEST',
-  apiVersion: '1.0.0',
-  appId: 'CF10123844CMV22ROK53DJ5ENIPQBG ',
-  secretKey: 'cfsk_ma_test_54219427595986174a28d85ccb654763_bf67859a',
-});
-module.exports={pg};
+Cashfree.XClientId = "TEST10123844e567d51edbee7c8a8cec44832101";
+Cashfree.XClientSecret = "cfsk_ma_test_42383a0c508319c6afbaaa8518324565_1b53e05d";
+Cashfree.XEnvironment = Cashfree.Environment.SANDBOX;
+module.exports= {Cashfree} ;
